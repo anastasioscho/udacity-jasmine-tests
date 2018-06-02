@@ -113,7 +113,7 @@ $(function() {
         });
 
         it ('are at least one', function(done) {
-            var container = $('.feed');
+            const container = $('.feed');
             expect(container).toBeDefined();
 
             const children = container.children();
@@ -133,9 +133,9 @@ $(function() {
 
         var firstResult;
         var secondResult;
-        var container = $('.feed');
 
         beforeEach(function(done) {
+            var container = $('.feed');
             loadFeed(0, function() {
                 firstResult = container.html();
                 loadFeed(1, function() {
@@ -146,7 +146,6 @@ $(function() {
         });
 
         it ('is different than the previous one', function(done) {
-            var container = $('.feed');
             expect(firstResult === secondResult).not.toBe(true);
             done();
         });
