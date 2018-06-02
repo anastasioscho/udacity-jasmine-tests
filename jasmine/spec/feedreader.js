@@ -114,7 +114,12 @@ $(function() {
 
         it ('are at least one', function(done) {
             var container = $('.feed');
-            expect(container.children().length).toBeGreaterThan(0);
+            expect(container).toBeDefined();
+
+            const children = container.children();
+            expect(children).toBeDefined();
+
+            expect(children.length).toBeGreaterThan(0);
             done();
         });
     });
