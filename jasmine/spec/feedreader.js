@@ -14,6 +14,8 @@ $(function() {
     * feeds definitions, the allFeeds variable in our application.
     */
 
+   jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
+
     describe('RSS Feeds', function() {
         /* This test makes sure that the
          * allFeeds variable has been defined and that it is not
