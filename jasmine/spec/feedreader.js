@@ -53,6 +53,13 @@ $(function() {
     /* This suite is all about the main menu */
 
     describe('The menu', function() {
+        /* This test ensures that all the necessary menu-related elements are defined */
+
+        it ('related elements are defined', function() {
+            expect($('body')).toBeDefined();
+            expect($('.menu-icon-link')).toBeDefined();
+        });
+
         /* This test ensures the menu element is hidden by default. */
 
         it ('is hidden by default', function() {
@@ -79,7 +86,7 @@ $(function() {
 
             const feedListItems = feedList.find('a');
             expect(feedListItems.length).toBe(allFeeds.length);
-            
+
             feedListItems.each(function(index) {
                 var feedListItem = $(feedListItems[index]).data('id');
                 expect(feedListItem).toBeDefined();
