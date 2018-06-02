@@ -136,6 +136,8 @@ $(function() {
 
         beforeEach(function(done) {
             var container = $('.feed');
+            expect(container).toBeDefined();
+
             loadFeed(0, function() {
                 firstResult = container.html();
                 loadFeed(1, function() {
