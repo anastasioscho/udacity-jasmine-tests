@@ -8,20 +8,22 @@
  * since some of these tests may require DOM elements. We want
  * to ensure they don't run until the DOM is ready.
  */
+
 $(function() {
     /* This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
     */
+
     describe('RSS Feeds', function() {
         /* This test makes sure that the
          * allFeeds variable has been defined and that it is not
          * empty.
          */
+
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
-
 
         /* This test loops through each feed
          * in the allFeeds object and ensures it has a URL defined
@@ -34,7 +36,6 @@ $(function() {
                 expect(feed.url.length).not.toBe(0);
             });
         });
-
 
         /* This test loops through each feed
          * in the allFeeds object and ensures it has a name defined
@@ -68,6 +69,23 @@ $(function() {
             expect($('body').hasClass('menu-hidden')).toBe(false);
             menuIcon.click();
             expect($('body').hasClass('menu-hidden')).toBe(true);
+        });
+
+        /* This test ensures that each menu item corresponds to a valid feed item */
+
+        it ('has valid items', function() {
+            const feedList = $('.feed-list')
+            expect(feedList).toBeDefined();
+
+            const feedListItems = feedList.find('a');
+            expect(feedListItems.length).toBe(allFeeds.length);
+            
+            feedListItems.each(function(index) {
+                var feedListItem = $(feedListItems[index]).data('id');
+                expect(feedListItem).toBeDefined();
+                expect(feedListItem).toBeGreaterThan(-1);
+                expect(feedListItem).toBeLessThan(allFeeds.length);
+            });
         });
     });
 
